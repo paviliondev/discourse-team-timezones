@@ -53,9 +53,9 @@ export default Ember.Component.extend({
     });
 
     people.sort(
-      (a, b) => ((a.username_lower > b.username_lower) ? 1 : -1)
-     );    
-    
+      (a, b) => (a.username_lower.localeCompare(b.username_lower) )
+     );   
+
     people.sort(
       (a, b) => ((times_score(a.offset,n) < times_score(b.offset,n)) ? 1 : -1)
     );    
