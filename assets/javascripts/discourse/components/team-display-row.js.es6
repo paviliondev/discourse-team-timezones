@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   row() {
 
     let times_score = (a, i) => {
-      return Math.pow(Math.sin((Math.PI/24)* (i+a-Discourse.SiteSettings.team_timezones_availability_origin_offset)), Discourse.SiteSettings.team_timezones_availability_curve_power_function);
+      return Math.abs(Math.pow(Math.sin((Math.PI/24)* (i+a-Discourse.SiteSettings.team_timezones_availability_origin_offset)), Discourse.SiteSettings.team_timezones_availability_curve_power_function));
     };
 
     const d = new Date();
