@@ -17,7 +17,8 @@ export default Ember.Component.extend({
   @discourseComputed('currentCategory')
   showTimezones() {
     const categoryId = this.get('currentCategory');
-    return Discourse.SiteSettings.team_timezones_categories.split("|").includes(`${categoryId}`);
+    const people = this.get('people')
+    return Array.isArray(people) && people.length && Discourse.SiteSettings.team_timezones_categories.split("|").includes(`${categoryId}`);
   },
 
   @discourseComputed
@@ -59,15 +60,13 @@ export default Ember.Component.extend({
 
   init () {
     this._super();
-    this.set('people',this.model());  
-    let whocares = this.get('showTimezones');
+    this.set('people',this.model());
   },
 
   @discourseComputed
   header() {
     let header ='';
     const n = this.get('currentHour');
-    //debugger;
 
     for (let i=-1; i < 24; i++) {
       header += (i<0) ? `<th>Timezones of group: ${this.get('team')}</th>` : (i==n) ? `<th class="highlight">${i}</th>` : `<th>${i}</th>`;
