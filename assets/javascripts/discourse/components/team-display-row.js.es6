@@ -13,7 +13,7 @@ export default Ember.Component.extend({
     };
 
     const d = new Date();
-    const n = d.getUTCHours() + 1;
+    const n = d.getUTCHours();
 
     let rgbToHex = (r, g, b) => {
       return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
