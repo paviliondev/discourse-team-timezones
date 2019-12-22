@@ -1,4 +1,7 @@
 plugins:
+  team_timezones_enabled:
+    default: true
+    client: true
   team_timezones_group:
     client: true
     default: 'staff'

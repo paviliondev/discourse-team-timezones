@@ -1,5 +1,6 @@
 en:
   site_settings:
+    team_timezones_enabled: "Enable the Team Timezones plugin"
     team_timezones_group: "The group which is shown in the dashboard"
     team_timezones_categories: "The categories where the dashboard is shown"
     team_timezones_availability_curve_power_function: "Determines spread of depicted availability"
