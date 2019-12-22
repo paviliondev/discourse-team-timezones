@@ -49,12 +49,16 @@ export default Ember.Component.extend({
 
     people.forEach (a => {
       let timezone = a.timezone.timezone;
-      a.offset = moment.tz(timezone)._offset;
+      a.offset = Math.round((moment.tz(timezone)._offset)/60);
     });
 
-     people.sort(
-      (a, b) => ((times_score(a.offset,n) < times_score(b.offset,n)) ? 1 : -1)
+    people.sort(
+      (a, b) => ((a.username_lower > b.username_lower) ? 1 : -1)
      );    
+    
+    people.sort(
+      (a, b) => ((times_score(a.offset,n) < times_score(b.offset,n)) ? 1 : -1)
+    );    
 
     return people;
   },
