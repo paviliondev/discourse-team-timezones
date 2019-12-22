@@ -1,13 +1,23 @@
 plugins:
   team_timezones_group:
     client: true
-    default: "staff"
+    default: 'staff'
     type: group
   team_timezones_categories:
     client: true
-    default: ""
+    default: ''
     type: category_list
     list_type: "compact"
+  team_timezones_availability_curve_power_function:
+    client: true
+    default: 6
+    min: 3
+    max: 12
+  team_timezones_availability_origin_offset:
+    client: true
+    default: 0
+    min: -12
+    max: 12
   team_timezones_background_colour:
     client: true
     default: '#FFFFFF'
