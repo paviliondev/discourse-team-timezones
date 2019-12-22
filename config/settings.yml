@@ -1,0 +1,16 @@
+plugins:
+  team_timezones_group:
+    client: true
+    default: "staff"
+    type: group
+  team_timezones_categories:
+    client: true
+    default: ""
+    type: category_list
+    list_type: "compact"
+  team_timezones_background_colour:
+    client: true
+    default: '#FFFFFF'
+  team_timezones_available_colour:
+    client: true
+    default: '#0088cc'

@@ -1,0 +1,29 @@
+.team-view {
+  table {
+    font-weight: 20;
+    width:100%
+  }
+  th {
+    min-width: 15px;
+  }
+  th.highlight {
+    border: 2px solid red;
+  }
+  td {
+    min-width:15px;  
+  }
+  td.highlight {
+    border: 2px solid red;
+  }
+  .user-info {
+    margin-bottom:0px;
+    vertical-align: middle;
+    min-width:200px;
+    max-width:300px;
+  }
+  img {
+    transform: scale(0.8) !important;
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
