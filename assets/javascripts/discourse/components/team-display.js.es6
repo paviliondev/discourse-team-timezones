@@ -16,7 +16,7 @@ export default Ember.Component.extend({
 
   @discourseComputed('currentCategory')
   showTimezones() {
-    if (!Discourse.SiteSettings.team_timezones_enabled) {return false} ; 
+    if (!Discourse.SiteSettings.team_timezones_enabled || Discourse.Mobile.isMobileDevice) {return false} ; 
     const categoryId = this.get('currentCategory');
     const people = this.get('people')
     return Array.isArray(people) && people.length && Discourse.SiteSettings.team_timezones_categories.split("|").includes(`${categoryId}`);
