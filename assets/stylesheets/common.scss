@@ -7,14 +7,25 @@
     min-width: 15px;
   }
   th.highlight {
-    border: 2px solid red;
+    border-width: 2px 2px 0 2px;
+    border-color: red;
+    border-style: solid;
   }
   td {
     min-width:15px;  
   }
   td.highlight {
-    border: 2px solid red;
+    border-width: 0 2px 0 2px;
+    border-color: red;
+    border-style: solid;
+  
+   &.footer  {
+    border-width: 2px 0 0 0;
+    border-color: red;
+    border-style: solid;
+   }
   }
+
   .user-info {
     margin-bottom:0px;
     vertical-align: middle;

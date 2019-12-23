@@ -46,8 +46,8 @@ export default Ember.Component.extend({
     let person = this.get('person');
 
     for (let i=0; i < 24; i++) {
-      base = `<td style="background-color:${colourGradientor(times_score(person.offset,i), hexToRgb(Discourse.SiteSettings.team_timezones_available_colour),hexToRgb(Discourse.SiteSettings.team_timezones_background_colour))};`;
-      base += (i==n) ? `" class="highlight"` : `"` ;
+      base = `<td style="background-color:${colourGradientor(times_score(person.offset,(i+12)%24), hexToRgb(Discourse.SiteSettings.team_timezones_available_colour),hexToRgb(Discourse.SiteSettings.team_timezones_background_colour))};`;
+      base += (i==11) ? `" class="highlight"` : `"` ;
       row += `${base}"></td>`;
     };
 

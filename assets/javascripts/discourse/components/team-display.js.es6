@@ -74,9 +74,20 @@ export default Ember.Component.extend({
     const n = this.get('currentHour');
 
     for (let i=-1; i < 24; i++) {
-      header += (i<0) ? `<th>Timezones of group: ${this.get('team')}</th>` : (i==n) ? `<th class="highlight">${i}</th>` : `<th>${i}</th>`;
+      header += (i<0) ? `<th>Timezones of group: ${this.get('team')}</th>` : (i==11) ? `<th class="highlight">${(i+n+37)%24}</th>` : `<th>${(i+n+37)%24}</th>`;
     };
 
     return Ember.String.htmlSafe(header);
+  },
+
+  @discourseComputed
+  footer() {
+    let footer ='';
+    
+    for (let i=-1; i < 24; i++) {
+      footer += (i==11) ? `<td class="footer highlight"></td>` : `<td></td>`;
+    };
+
+    return Ember.String.htmlSafe(footer);
   }
 });
