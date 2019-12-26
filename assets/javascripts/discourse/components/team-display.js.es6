@@ -35,7 +35,7 @@ export default Ember.Component.extend({
   @discourseComputed
   currentHour() {
     const d = new Date();
-    return d.getUTCHours();
+    return d.getHours();
   },
   
   model() {
