@@ -9,7 +9,13 @@ export default Ember.Component.extend({
   row() {
 
     let times_score = (a, i) => {
-      return Math.abs(Math.pow(Math.sin((Math.PI/24)* (i+a-Discourse.SiteSettings.team_timezones_availability_origin_offset)), Discourse.SiteSettings.team_timezones_availability_curve_power_function));
+      const periodic_time = a + i;
+      const local_time = periodic_time >= 0 ? periodic_time <= 23 ? periodic_time : periodic_time - 24 : periodic_time + 24 ;
+      console.log (periodic_time);
+      return Discourse.SiteSettings.team_timezones_mode == 'zones' ?
+       ((local_time >= Discourse.SiteSettings.team_timezones_evening_start) ? 0.5 :
+        (local_time < Discourse.SiteSettings.team_timezones_morning_start) ? 0 : 1) :
+        Math.abs(Math.pow(Math.sin((Math.PI/24)* (local_time-Discourse.SiteSettings.team_timezones_availability_origin_offset)), Discourse.SiteSettings.team_timezones_availability_curve_power_function));
     };
 
     const d = new Date();

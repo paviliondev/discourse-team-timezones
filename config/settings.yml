@@ -11,6 +11,13 @@ plugins:
     default: ''
     type: category_list
     list_type: "compact"
+  team_timezones_mode:
+    client: true
+    default: "band"
+    type: enum
+    choices:
+      - band
+      - zones
   team_timezones_availability_curve_power_function:
     client: true
     default: 6
@@ -21,6 +28,12 @@ plugins:
     default: 0
     min: -12
     max: 12
+  team_timezones_morning_start:
+    client: true
+    default: 9
+  team_timezones_evening_start:
+    client: true
+    default: 18
   team_timezones_background_colour:
     client: true
     default: '#FFFFFF'
