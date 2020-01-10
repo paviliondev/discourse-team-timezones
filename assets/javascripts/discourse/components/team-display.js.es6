@@ -16,7 +16,7 @@ export default Ember.Component.extend({
 
   @discourseComputed('currentCategory')
   showTimezones() {
-    if (!Discourse.SiteSettings.team_timezones_enabled || Discourse.Mobile.isMobileDevice) {return false} ; 
+    if (!Discourse.SiteSettings.team_timezones_enabled || this.site.mobileView) {return false} ; 
     const categoryId = this.get('currentCategory');
     const people = this.get('people')
     return Array.isArray(people) && people.length && Discourse.SiteSettings.team_timezones_categories.split("|").includes(`${categoryId}`);
@@ -41,6 +41,9 @@ export default Ember.Component.extend({
   model() {
     const controller = getOwner(this).lookup('controller:discovery/topics');
     let people = controller.get('teamtimezones');
+
+    if (typeof people === "undefined") {return {}};
+    
     const n = this.get('currentHour');
 
     let times_score = (a, i) => {

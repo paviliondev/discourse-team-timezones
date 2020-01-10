@@ -11,7 +11,6 @@ export default Ember.Component.extend({
     let times_score = (a, i) => {
       const periodic_time = a + i;
       const local_time = periodic_time >= 0 ? periodic_time <= 23 ? periodic_time : periodic_time - 24 : periodic_time + 24 ;
-      console.log (periodic_time);
       return Discourse.SiteSettings.team_timezones_mode == 'zones' ?
        ((local_time >= Discourse.SiteSettings.team_timezones_evening_start) ? 0.5 :
         (local_time < Discourse.SiteSettings.team_timezones_morning_start) ? 0 : 1) :
