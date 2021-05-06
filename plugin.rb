@@ -1,6 +1,6 @@
 # name: discourse-team-timezones
-# about: a dashboard is placed at the top of specified category topic lists to show waking hours of specificied group, e.g. staff
-# version: 0.1
+# about: a dashboard is placed at the top of specified category or tag topic lists to show waking hours of specificied group, e.g. staff
+# version: 0.2
 # authors: Robert Barrow
 # url: https://github.com/paviliondev/discourse-team-timezones
 
