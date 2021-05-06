@@ -243,7 +243,7 @@ export default createWidget("team-timezone-vis", {
                   [
                     h("img.team-timezone-avatar", {
                       attributes: {
-                        src: person.avatar_template,
+                        src: person.avatar_template.replace("{size}", "25"),
                       },
                     }),
                     h("span.team-timezone-username", person.name),
