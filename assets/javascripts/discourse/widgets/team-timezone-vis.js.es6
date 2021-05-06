@@ -246,7 +246,7 @@ export default createWidget("team-timezone-vis", {
                         src: person.avatar_template.replace("{size}", "25"),
                       },
                     }),
-                    h("span.team-timezone-username", person.name),
+                    h("span.team-timezone-username", person.name || person.username),
                   ]
                 )
               ),
