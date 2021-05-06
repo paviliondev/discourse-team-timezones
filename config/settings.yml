@@ -11,6 +11,10 @@ plugins:
     default: ''
     type: category_list
     list_type: "compact"
+  team_timezones_tags:
+    client: true
+    default: ''
+    type: tag_list
   team_timezones_mode:
     client: true
     default: "band"

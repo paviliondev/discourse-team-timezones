@@ -1,11 +1,3 @@
-{{#if showTimezones}}
-  <table id="time-table">
-    <thead id="header">{{header}}</thead>
-    <tbody id="body">
-    {{#each people as |person|}}
-      <Team-display-row @person={{person}}/>
-    {{/each}}
-    <tr id="footer">{{footer}}</tr>
-    </tbody>
-  </table>
+{{#if shouldDisplay}}
+  {{mount-widget widget="team-timezone-vis"}}
 {{/if}}
