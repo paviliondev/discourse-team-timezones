@@ -39,7 +39,8 @@ export default createWidget("team-timezone-vis", {
     return people;
   },
 
-  row: (person) => {
+  row: (person, self) => {
+    const { siteSettings } = self;
     let times_score = (a, i) => {
       const periodic_time = a + i;
       const local_time =
@@ -48,12 +49,12 @@ export default createWidget("team-timezone-vis", {
             ? periodic_time
             : periodic_time - 24
           : periodic_time + 24;
-      return Discourse.application.SiteSettings.team_timezones_mode == "zones"
+      return siteSettings.team_timezones_mode == "zones"
         ? local_time >=
-          Discourse.application.SiteSettings.team_timezones_evening_start
+          siteSettings.team_timezones_evening_start
           ? 0.5
           : local_time <
-            Discourse.application.SiteSettings.team_timezones_morning_start
+            siteSettings.team_timezones_morning_start
           ? 0
           : 1
         : Math.abs(
@@ -61,10 +62,10 @@ export default createWidget("team-timezone-vis", {
               Math.sin(
                 (Math.PI / 24) *
                   (local_time -
-                    Discourse.application.SiteSettings
+                    siteSettings
                       .team_timezones_availability_origin_offset)
               ),
-              Discourse.application.SiteSettings
+              siteSettings
                 .team_timezones_availability_curve_power_function
             )
           );
@@ -109,11 +110,11 @@ export default createWidget("team-timezone-vis", {
             style: `background-color:${colourGradientor(
               times_score(person.offset, (i + n + 37) % 24),
               hexToRgb(
-                Discourse.application.SiteSettings
+                siteSettings
                   .team_timezones_available_colour
               ),
               hexToRgb(
-                Discourse.application.SiteSettings
+                siteSettings
                   .team_timezones_background_colour
               )
             )};`,
@@ -173,8 +174,8 @@ export default createWidget("team-timezone-vis", {
     });
   },
 
-  team() {
-    return Discourse.application.SiteSettings.team_timezones_group.replace(
+  team(self) {
+    return self.siteSettings.team_timezones_group.replace(
       /_/g,
       " "
     );
@@ -192,7 +193,7 @@ export default createWidget("team-timezone-vis", {
     for (let i = -1; i < 24; i++) {
       header.push(
         i < 0
-          ? h("th", `Timezones of group: ${self.team()}`)
+          ? h("th", `Timezones of group: ${self.team(self)}`)
           : i == 11
           ? h("th.highlight", `${(i + n + 37) % 24}`)
           : h("th", `${(i + n + 37) % 24}`)
@@ -249,7 +250,7 @@ export default createWidget("team-timezone-vis", {
                   ]
                 )
               ),
-              this.row(person),
+              this.row(person, this),
             ])
           );
         });
