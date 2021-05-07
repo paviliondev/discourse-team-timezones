@@ -10,9 +10,11 @@
   }
   th, td {
     text-align: center;
+    padding: 0.2em;
   }
   th.label, td.team-timezone-user {
     text-align:left;
+    padding: 0.01em;
   }
   th.highlight {
     border-width: 2px 2px 0 2px;
