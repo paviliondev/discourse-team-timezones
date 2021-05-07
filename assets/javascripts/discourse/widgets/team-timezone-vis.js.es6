@@ -189,14 +189,17 @@ export default createWidget("team-timezone-vis", {
       return d.getHours();
     };
     const n = currentHour();
+    let hour = 0, hourString ='';
 
     for (let i = -1; i < 24; i++) {
+      hour = (i + n + 37) % 24
+      hourString = hour < 10 ? `0${hour}` : `${hour}`
       header.push(
         i < 0
-          ? h("th", `Timezones of group: ${self.team(self)}`)
+          ? h("th.label", `Timezones of group: ${self.team(self)}`)
           : i == 11
-          ? h("th.highlight", `${(i + n + 37) % 24}`)
-          : h("th", `${(i + n + 37) % 24}`)
+          ? h("th.highlight", hourString)
+          : h("th", hourString)
       );
     }
 

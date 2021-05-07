@@ -9,8 +9,10 @@
     border-radius: 50%;
   }
   th, td {
-    min-width: 15px;
-    padding: 0.4em;
+    text-align: center;
+  }
+  th.label, td.team-timezone-user {
+    text-align:left;
   }
   th.highlight {
     border-width: 2px 2px 0 2px;
