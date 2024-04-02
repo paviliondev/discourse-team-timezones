@@ -5,14 +5,6 @@ import discourseComputed from "discourse-common/utils/decorators";
 export default Service.extend({
   router: service("router"),
 
-  @discourseComputed("router.currentRouteName")
-  isTopicListRoute(currentRouteName) {
-    return (
-      currentRouteName.match(/^discovery\./) ||
-      currentRouteName.match(/^tag?\.show/)
-    );
-  },
-
   @discourseComputed(
     "router.currentRouteName",
     "router.currentRoute.attributes.category.id"
@@ -31,8 +23,8 @@ export default Service.extend({
     return tagId;
   },
 
-  @discourseComputed("viewingCategoryId", "viewingTagId", "isTopicListRoute")
-  shouldDisplay(viewingCategoryId, viewingTagId, isTopicListRoute) {
+  @discourseComputed("viewingCategoryId", "viewingTagId")
+  shouldDisplay(viewingCategoryId, viewingTagId) {
     const teamTimezoneCategories = this.siteSettings.team_timezones_categories
       .split("|")
       .map((id) => parseInt(id, 10));
